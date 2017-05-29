@@ -40,6 +40,25 @@ public IActionResult YourAction()
     return RedirectToAction("AnotherAction");
 }
 ```
+Add **Core.Flash TagHelper** to your **_ViewImports.cs**
+
+```csharp
+@using Core.Flash.Web
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Core.Flash
+```
+Add the TagHelper to your **_Layout.cs**
+
+```html
+<div class="container body-content">
+    <div flashes></div>
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; 2017</p>
+    </footer>
+</div>
+```
 
 **Core.Flash** uses [Bootstrap Alerts](https://v4-alpha.getbootstrap.com/components/alerts/) so you can pass types like success, info, warning, danger or your custom types.
 
