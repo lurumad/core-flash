@@ -43,6 +43,7 @@ public IActionResult YourAction()
 
 **Core.Flash** uses [Bootstrap Alerts](https://v4-alpha.getbootstrap.com/components/alerts/) so you can pass types like success, info, warning, danger or your custom types.
 
+![Sample](https://github.com/lurumad/core-flash/blob/master/assets/flash.gif)
 
 _Copyright &copy; 2017 Lurumad Contributors
 
