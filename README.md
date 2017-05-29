@@ -1,4 +1,4 @@
-# Core.Flash [![NuGet](https://img.shields.io/nuget/v/AspNetCore.Health.svg)](https://www.nuget.org/packages/Core.Flash/)
+# Core.Flash [![NuGet](https://img.shields.io/nuget/v/Core.Flash.svg)](https://www.nuget.org/packages/Core.Flash/)
 
 Minimalistic flash message system for ASP.NET MVC Core.
 
