@@ -1,6 +1,6 @@
 # Core.Flash [![NuGet](https://img.shields.io/nuget/v/Core.Flash.svg)](https://www.nuget.org/packages/Core.Flash/)
 
-Minimalistic flash message system for ASP.NET MVC Core.
+Minimalistic flash message system for ASP.NET MVC Core to provide contextual feedback messages between actions.
 
 ### Install Core.Flash
 
@@ -60,7 +60,7 @@ Add the TagHelper to your **_Layout.cs**
 </div>
 ```
 
-**Core.Flash** uses [Bootstrap Alerts](https://v4-alpha.getbootstrap.com/components/alerts/) so you can pass types like success, info, warning, danger or your custom types.
+**Core.Flash** uses [Bootstrap Alerts](https://v4-alpha.getbootstrap.com/components/alerts/).
 
 ![Sample](https://github.com/lurumad/core-flash/blob/master/assets/flash.gif)
 
