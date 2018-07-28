@@ -15,10 +15,10 @@ namespace Core.Flash
             tempData = factory.GetTempData(contextAccessor.HttpContext);
         }
 
-        public void Flash(string type, string message)
+        public void Flash(string type, string message, bool dismissable = false)
         {
             var messages = tempData.Get<Queue<Message>>(Constants.Key) ?? new Queue<Message>();
-            messages.Enqueue(new Message(type, message));
+            messages.Enqueue(new Message(type, message, dismissable));
             tempData.Put(Constants.Key, messages);
         }
     }
