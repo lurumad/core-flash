@@ -23,8 +23,8 @@ namespace Core.Flash
         }
 
         public bool Any()
-		{
-			return tempData.ContainsKey(Constants.Key);
-		}
+	{
+	    return tempData.ContainsKey(Constants.Key);
+	}
     }
 }
