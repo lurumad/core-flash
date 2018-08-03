@@ -20,6 +20,7 @@ namespace Core.Flash
             var messages = tempData.Get<Queue<Message>>(Constants.Key) ?? new Queue<Message>();
             messages.Enqueue(new Message(type, message, dismissable));
             tempData.Put(Constants.Key, messages);
+            tempData.Save();
         }
     }
 }
