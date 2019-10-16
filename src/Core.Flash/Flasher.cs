@@ -21,5 +21,10 @@ namespace Core.Flash
             messages.Enqueue(new Message(type, message, dismissable));
             tempData.Put(Constants.Key, messages);
         }
+	
+        public bool Any()
+        {
+            return tempData.ContainsKey(Constants.Key);
+        }
     }
 }
