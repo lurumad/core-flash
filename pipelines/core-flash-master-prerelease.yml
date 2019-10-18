@@ -1,0 +1,49 @@
+name: $(rev:r)
+
+trigger:
+    batch: true 
+    tags:
+        include:
+        - prerelease-*
+pr: none 
+pool:
+  name: Hosted Ubuntu 1604
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+steps:
+- task: UseDotNet@2
+  displayName: 'install dotnet sdk'
+  inputs:
+    packageType: 'sdk'
+    version: '3.0.100'
+    includePreviewVersions: true
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: restore
+    projects: '**/Core.Flash.sln'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    command: build
+    arguments: '--configuration $(buildConfiguration) --no-restore'
+    projects: '**/Core.Flash.sln'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack Core.Flash'
+  inputs:
+    command: 'pack'
+    feedsToUse: 'select'
+    packagesToPack: './src/Core.Flash/Core.Flash.csproj'
+    packDirectory: '$(Build.ArtifactStagingDirectory)'
+    versioningScheme: 'off'
+    buildProperties: 'VersionSuffix=-preview.$(Build.BuildNumber)'
+- task: NuGetCommand@2
+  displayName: 'push package to Nuget Feed as pre-release'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'Nuget Release'

@@ -1,0 +1,48 @@
+name: $(rev:r)
+trigger:
+    batch: true 
+    tags:
+        include:
+        - release-*
+pr: none 
+pool:
+  name: Hosted Ubuntu 1604
+
+variables:
+  solution: '**/Core.Flash.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+steps:
+- task: NuGetToolInstaller@1
+  inputs:
+    versionSpec: '5.3.0'
+- task: UseDotNet@2
+  displayName: 'install dotnet sdk'
+  inputs:
+    packageType: 'sdk'
+    version: '3.0.100'
+    includePreviewVersions: true
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: restore
+    projects: '$(solution)'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    command: build
+    arguments: '--configuration $(buildConfiguration) --no-restore'
+    projects: '$(solution)'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack Core.Flash'
+  inputs:
+    command: 'pack'
+    feedsToUse: 'select'
+    packagesToPack: './src/Core.Flash/Core.Flash.csproj'
+    packDirectory: '$(Build.ArtifactStagingDirectory)'
+    versioningScheme: 'off'
+- template: /pipelines/templates/nuget-push-package.yml
+  parameters:
+      nugetServiceConnection: 'Nuget Release'
+      pkgPath: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+      nugetApiKey: '$(nugetApiKey)'

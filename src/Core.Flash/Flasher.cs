@@ -1,4 +1,5 @@
-﻿using Core.Flash.Extensions;
+﻿using Core.Flash.Abstractions;
+using Core.Flash.Extensions;
 using Core.Flash.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -10,9 +11,9 @@ namespace Core.Flash
     {
         private ITempDataDictionary tempData;
 
-        public Flasher(ITempDataDictionaryFactory factory, IHttpContextAccessor contextAccessor)
+        public Flasher(ITempDataDictionaryFactory factory, IHttpContextAccessor httpContextAccessor)
         {
-            tempData = factory.GetTempData(contextAccessor.HttpContext);
+            tempData = factory.GetTempData(httpContextAccessor.HttpContext);
         }
 
         public void Flash(string type, string message, bool dismissable = false)
