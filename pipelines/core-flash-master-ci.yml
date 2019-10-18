@@ -5,12 +5,7 @@ trigger:
     branches:
         include:
         - master
-    paths:
-        include:
-        - src/*
-        - tests/*
-        - pipelines/core-flash-master-ci.yml
-
+        
 pool:
   name: Hosted Ubuntu 1604
 
