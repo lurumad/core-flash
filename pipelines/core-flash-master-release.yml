@@ -43,6 +43,6 @@ steps:
     versioningScheme: 'off'
 - template: /pipelines/templates/nuget-push-package.yml
   parameters:
-      nugetServiceConnection: 'Nuget Release'
+      nugetServiceConnection: 'NuGet - Core.Flash'
       pkgPath: '$(Build.ArtifactStagingDirectory)/*.nupkg'
       nugetApiKey: '$(nugetApiKey)'
