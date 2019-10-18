@@ -16,17 +16,3 @@ buildSuffix="$suffix-$commitHash"
 echo "build: Version suffix is $buildSuffix"
 
 dotnet build -c Release --version-suffix "$buildSuffix"  -v q /nologo
-
-echo "Running unit tests"
-dotnet test ./tests/UnitTests/UnitTests.csproj
-
-echo "Starting docker containers"
-docker-compose -f build/docker-compose-infrastructure.yml up -d
-
-echo "Runing functional tests"
-dotnet test ./tests/FunctionalTests/FunctionalTests.csproj
-
-echo "Finalizing docker containers"
-docker-compose -f build/docker-compose-infrastructure.yml down
-
-dotnet pack ./src/Core.Flash/Core.Flash.csproj -c Release -o ./artifacts --include-symbols --no-build --version-suffix=$buildSuffix

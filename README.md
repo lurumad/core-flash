@@ -1,6 +1,6 @@
 # Core.Flash [![NuGet](https://img.shields.io/nuget/v/Core.Flash.svg)](https://www.nuget.org/packages/Core.Flash/)
 
-Minimalistic flash message system for ASP.NET MVC Core to provide contextual feedback messages between actions.
+Minimalistic flash message system for ASP.NET MVC Core to provide contextual feedback messages between actions based on [Bootstrap Alerts](https://getbootstrap.com/docs/4.0/components/alerts/)
 
 ### Install Core.Flash
 
@@ -35,8 +35,8 @@ And call **Flash** method passing a type and the message:
 ```csharp
 public IActionResult YourAction()
 {
-    f.Flash("success", "Flash message system for ASP.NET MVC Core");
-
+    f.Flash(Types.Success, "Flash message system for ASP.NET MVC Core", dismissable: true);
+    f.Flash(Types.Danger, "Flash message system for ASP.NET MVC Core", dismissable: false);
     return RedirectToAction("AnotherAction");
 }
 ```

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>$(NetStandardTargetVersion)</TargetFramework>
     <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
-    <Description>A minimalistic flash system messages for ASP.NET Core MVC. For more information see https://github.com/lurumad/core-flash </Description>
+    <Description>Minimalistic flash message system for ASP.NET Core MVC to provide contextual feedback messages between actions based on Bootstrap Alerts (https://getbootstrap.com/docs/4.0/components/alerts/). For more information see https://github.com/lurumad/core-flash </Description>
     <PackageTags>Flash;AspNetCore;MVC</PackageTags>
     <Version>$(coreflash)</Version>
     <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
