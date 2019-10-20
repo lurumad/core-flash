@@ -25,7 +25,6 @@ namespace Core.Flash
         }
 
         public void FlashPrimary(string message, bool dismissable = false)
-
         {
             Flash(Types.Primary, message, dismissable);	
         }

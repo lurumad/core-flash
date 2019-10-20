@@ -25,10 +25,10 @@ namespace WebApp.Controllers
 
         public IActionResult Privacy()
         {
-            _flasher.Flash(Types.Primary, "A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
-            _flasher.Flash(Types.Secondary, "A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
-            _flasher.Flash(Types.Success, "A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
-            _flasher.Flash(Types.Danger, "A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
+            _flasher.FlashPrimary("A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
+            _flasher.FlashSecondary("A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
+            _flasher.FlashSuccess("A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
+            _flasher.FlashDanger("A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
             _flasher.Flash(Types.Warning, "A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
             _flasher.Flash(Types.Info, "A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
             _flasher.Flash(Types.Light, "A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
