@@ -1,8 +1,10 @@
 ﻿using System.Diagnostics;
-using Core.Flash;
-using Core.Flash.Abstractions;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+
+using Core.Flash;
+
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -25,10 +27,10 @@ namespace WebApp.Controllers
 
         public IActionResult Privacy()
         {
-            _flasher.FlashPrimary("A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
-            _flasher.FlashSecondary("A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
-            _flasher.FlashSuccess("A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
-            _flasher.FlashDanger("A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
+            _flasher.Primary("A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
+            _flasher.Secondary("A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
+            _flasher.Success("A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
+            _flasher.Danger("A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
             _flasher.Flash(Types.Warning, "A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
             _flasher.Flash(Types.Info, "A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
             _flasher.Flash(Types.Light, "A minimalistic flash system message for ASP.NET Core MVC", dismissable: true);
