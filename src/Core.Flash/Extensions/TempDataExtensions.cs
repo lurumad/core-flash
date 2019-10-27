@@ -12,7 +12,7 @@ namespace Core.Flash.Extensions
 
         public static T Get<T>(this ITempDataDictionary tempData, string key)
         {
-            return tempData.TryGetValue(key, out object value) ? JsonConvert.DeserializeObject<T>(value.ToString()) : default(T);
+            return tempData.TryGetValue(key, out var value) ? JsonConvert.DeserializeObject<T>(value.ToString()) : default;
         }
     }
 }

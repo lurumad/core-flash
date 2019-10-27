@@ -1,4 +1,4 @@
-﻿namespace Core.Flash.Abstractions
+﻿namespace Core.Flash
 {
     public interface IFlasher
     {

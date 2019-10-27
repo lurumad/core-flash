@@ -1,7 +1,7 @@
-﻿using Core.Flash;
-using Core.Flash.Abstractions;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
+﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+
+using Core.Flash;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

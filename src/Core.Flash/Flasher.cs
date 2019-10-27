@@ -1,15 +1,16 @@
-﻿using Core.Flash.Abstractions;
-using Core.Flash.Extensions;
-using Core.Flash.Model;
+﻿using System.Collections.Generic;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using System.Collections.Generic;
+
+using Core.Flash.Model;
+using Core.Flash.Extensions;
 
 namespace Core.Flash
 {
     public class Flasher : IFlasher
     {
-        private ITempDataDictionary tempData;
+        private readonly ITempDataDictionary tempData;
 
         public Flasher(ITempDataDictionaryFactory factory, IHttpContextAccessor httpContextAccessor)
         {
@@ -23,7 +24,7 @@ namespace Core.Flash
             tempData.Put(Constants.Key, messages);
             tempData.Save();
         }
-	
+
         public bool Any()
         {
             return tempData.ContainsKey(Constants.Key);

@@ -1,16 +1,18 @@
-﻿using Core.Flash.Extensions;
-using Core.Flash.Model;
+﻿using System.Collections.Generic;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using System.Collections.Generic;
+
+using Core.Flash.Model;
+using Core.Flash.Extensions;
 
 namespace Core.Flash.Mvc
 {
     [HtmlTargetElement("div", Attributes = "flashes")]
     public class FlashesTagHelper : TagHelper
     {
-        private ITempDataDictionary tempData;
+        private readonly ITempDataDictionary tempData;
 
         private const string HtmlStandardTemplate = "<div class=\"alert alert-{0}\">{1}</div>";
 
