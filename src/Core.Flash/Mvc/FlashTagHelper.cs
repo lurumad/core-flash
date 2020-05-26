@@ -12,7 +12,8 @@ namespace Core.Flash.Mvc
     [HtmlTargetElement("div", Attributes = "flashes")]
     public class FlashesTagHelper : TagHelper
     {
-        private readonly ITempDataDictionary tempData;
+        private readonly ITempDataDictionaryFactory tempDataDictionaryFactory;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
         private const string HtmlStandardTemplate = "<div class=\"alert alert-{0}\">{1}</div>";
 
@@ -23,13 +24,15 @@ namespace Core.Flash.Mvc
                 "</button>{1}" +
             "</div>";
 
-        public FlashesTagHelper(ITempDataDictionaryFactory factory, IHttpContextAccessor contextAccessor)
+        public FlashesTagHelper(ITempDataDictionaryFactory factory, IHttpContextAccessor httpContextAccessor)
         {
-            tempData = factory.GetTempData(contextAccessor.HttpContext);
+            this.tempDataDictionaryFactory = factory;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            var tempData = GetTempData();
             var messages = tempData.Get<Queue<Message>>(Constants.Key) ?? new Queue<Message>();
 
             while (messages.Count > 0)
@@ -42,6 +45,11 @@ namespace Core.Flash.Mvc
 
                 output.Content.AppendHtml(html);
             }
+        }
+
+        private ITempDataDictionary GetTempData()
+        {
+            return tempDataDictionaryFactory.GetTempData(httpContextAccessor.HttpContext);
         }
     }
 }
