@@ -14,6 +14,7 @@ namespace Core.Flash.Mvc
     {
         private readonly ITempDataDictionaryFactory tempDataDictionaryFactory;
         private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly IMessageRenderer messageRenderer;
 
         private const string HtmlStandardTemplate = "<div class=\"alert alert-{0}\">{1}</div>";
 
@@ -24,10 +25,11 @@ namespace Core.Flash.Mvc
                 "</button>{1}" +
             "</div>";
 
-        public FlashesTagHelper(ITempDataDictionaryFactory factory, IHttpContextAccessor httpContextAccessor)
+        public FlashesTagHelper(ITempDataDictionaryFactory factory, IHttpContextAccessor httpContextAccessor, IMessageRenderer messageRenderer)
         {
             this.tempDataDictionaryFactory = factory;
             this.httpContextAccessor = httpContextAccessor;
+            this.messageRenderer = messageRenderer;
         }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
@@ -35,16 +37,12 @@ namespace Core.Flash.Mvc
             var tempData = GetTempData();
             var messages = tempData.Get<Queue<Message>>(Constants.Key) ?? new Queue<Message>();
 
-            while (messages.Count > 0)
+            if (messages.Count > 0)
             {
-                var message = messages.Dequeue();
-
-                var html = message.Dismissable
-                    ? string.Format(HtmlDismissableTemplate, message.Type, message.Text)
-                    : string.Format(HtmlStandardTemplate, message.Type, message.Text);
-
-                output.Content.AppendHtml(html);
+                output.Content.AppendHtml(messageRenderer.RenderMessages(messages));
+                messages.Clear();
             }
+            tempData.Put(Constants.Key, messages);
         }
 
         private ITempDataDictionary GetTempData()

@@ -1,3 +1,4 @@
+using Core.Flash.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,7 +19,7 @@ namespace WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddFlashes()
+                .AddFlashes<BootstrapMessageRenderer>()
                 .AddControllersWithViews();
         }
 
