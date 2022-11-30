@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>$(NetStandardTargetVersion)</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
     <Description>Minimalistic flash message system for ASP.NET Core MVC to provide contextual feedback messages between actions based on Bootstrap Alerts (https://getbootstrap.com/docs/4.0/components/alerts/). For more information see https://github.com/lurumad/core-flash </Description>
     <PackageTags>Flash;AspNetCore;MVC</PackageTags>
