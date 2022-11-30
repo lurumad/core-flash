@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace Core.Flash.Extensions
 {
@@ -7,12 +7,12 @@ namespace Core.Flash.Extensions
     {
         public static void Put<T>(this ITempDataDictionary tempData, string key, T value)
         {
-            tempData[key] = JsonConvert.SerializeObject(value);
+            tempData[key] = JsonSerializer.Serialize(value);
         } 
 
         public static T Get<T>(this ITempDataDictionary tempData, string key)
         {
-            return tempData.TryGetValue(key, out var value) ? JsonConvert.DeserializeObject<T>(value.ToString()) : default;
+            return tempData.TryGetValue(key, out var value) ? JsonSerializer.Deserialize<T>(value.ToString()) : default;
         }
     }
 }

@@ -15,13 +15,11 @@ namespace Core.Flash.Mvc
         private readonly ITempDataDictionaryFactory tempDataDictionaryFactory;
         private readonly IHttpContextAccessor httpContextAccessor;
 
-        private const string HtmlStandardTemplate = "<div class=\"alert alert-{0}\">{1}</div>";
+        private const string HtmlStandardTemplate = "<div class=\"alert alert-{0} fade show\">{1}</div>";
 
-        private const string HtmlDismissableTemplate = 
-            "<div class=\"alert alert-{0} alert-dismissible\" role=\"alert\">" +
-                "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-                    "<span aria-hidden=\"true\">&times;</span>" +
-                "</button>{1}" +
+        private const string HtmlDismissableTemplate =
+            "<div class=\"alert alert-{0} alert-dismissible fade show\" role=\"alert\">" +
+                @"<button type=""button"" class=""btn-close"" data-bs-dismiss=""alert"" aria-label=""Close""></button>{1}" + 
             "</div>";
 
         public FlashesTagHelper(ITempDataDictionaryFactory factory, IHttpContextAccessor httpContextAccessor)

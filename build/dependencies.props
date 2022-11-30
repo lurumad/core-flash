@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup Label="SDK Versions">
-    <NetStandardTargetVersion>netstandard2.0</NetStandardTargetVersion>
-    <NetCoreTargetVersion>netcoreapp3.0</NetCoreTargetVersion>
+    <NetStandardTargetVersion>netstandard2.1</NetStandardTargetVersion>
+    <NetCoreTargetVersion>net6</NetCoreTargetVersion>
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
@@ -21,8 +21,8 @@
   <PropertyGroup Label="Package Dependencies">
     <MicrosoftAspNetCoreMvcViewFeatures>2.2.0</MicrosoftAspNetCoreMvcViewFeatures>
     <MicrosoftAspNetCoreRazorRuntime>2.2.0</MicrosoftAspNetCoreRazorRuntime>
-    <MicrosoftExtensionsDependencyInjection>3.0.0</MicrosoftExtensionsDependencyInjection>
-    <NewtonsoftJson>12.0.2</NewtonsoftJson>
+    <MicrosoftExtensionsDependencyInjection>7.0.0</MicrosoftExtensionsDependencyInjection>
+    <SystemTextJson>7.0.0</SystemTextJson>
   </PropertyGroup>
 
 </Project>
